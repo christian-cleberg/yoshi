@@ -1,18 +1,21 @@
 # Yoshi: A Password Manager
 
-A simple command-line pass manager, writtin in Python + SQLite3. This tool allows you to manage accounts and generate
-random passwords containing ASCII letters, numbers, and punctuation (min. 8 characters) or XKCD-like passphrases (min. 3
-words).
+A simple command-line pass manager, writtin in Python + SQLite3. This tool
+allows you to manage accounts and generate random passwords containing ASCII
+letters, numbers, and punctuation (min. 8 characters) or XKCD-like passphrases
+(min. 3 words).
 
-Please note that the script is written in Python 3 - you may need to run the script with the `python3` command instead
-of `python` if your system uses a default of Python 2. See the Installation & Usage sections below for more information.
+Please note that the script is written in Python 3 - you may need to run the
+script with the `python3` command instead of `python` if your system uses a
+default of Python 2. See the Installation & Usage sections below for more
+information.
 
 # Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-    - [Arguments](#arguments)
-- [Contributing](#contributing)
+-   [Installation](#installation)
+-   [Usage](#usage)
+    -   [Arguments](#arguments)
+-   [Contributing](#contributing)
 
 # Installation
 
@@ -21,7 +24,7 @@ of `python` if your system uses a default of Python 2. See the Installation & Us
 To run the script locally, run the following commands:
 
 ```bash
-git clone https://git.sr.ht/~kaizoku/yoshi/
+git clone https://github.com/christian-cleberg/yoshi/
 ```
 
 ```bash
@@ -144,8 +147,8 @@ Flags for the `delete`, `d` command - this flag is required:
   </tbody>
 </table>
 
-Flags for the `encrypt` or `decrypt` command - you must provide at least one when encrypting, none are required when
-decrypting:
+Flags for the `encrypt` or `decrypt` command - you must provide at least one
+when encrypting, none are required when decrypting:
 
 <table>
   <thead>
@@ -173,4 +176,5 @@ decrypting:
 
 [(Back to top)](#table-of-contents)
 
-Any and all contributions are welcome. Feel free to fork the project, add features, and submit a pull request.
+Any and all contributions are welcome. Feel free to fork the project, add
+features, and submit a pull request.

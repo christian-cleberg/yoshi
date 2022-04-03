@@ -73,22 +73,28 @@ def create_account() -> None:
     application_string = input('Please enter a name for this account: ')
     username_string = input('Please enter your username for this account: ')
     url_string = input('(Optional) Please enter a URL for this account: ')
-    password_type = input('Do you want a random character password (p) or XKCD-style passphrase (x)? (p|x): ')
+    password_type = input(
+        'Do you want a random character password (p) or XKCD-style passphrase (x)? (p|x): ')
     if password_type == "x" or password_type == "xkcd":
-        password_length = int(input('Please enter number of words to include (min. 2): '))
-        password_separator = input('Please enter your desired separator symbol (_, -, ~, etc.: ')
+        password_length = int(
+            input('Please enter number of words to include (min. 2): '))
+        password_separator = input(
+            'Please enter your desired separator symbol (_, -, ~, etc.: ')
         if password_length < 3:
             print('Error: Your passphrase length must be at least 3 words.')
         else:
-            password_string = generate_passphrase(password_length, password_separator)
+            password_string = generate_passphrase(
+                password_length, password_separator)
     else:
-        password_length = int(input('Please enter your desired password length (min. 8): '))
+        password_length = int(
+            input('Please enter your desired password length (min. 8): '))
         if password_length < 8:
             print('Error: Your password length must be at least 8 characters.')
         else:
             password_characters = generate_characters(password_length)
             password_string = shuffle_characters(password_characters)
-    account = Account(str(uuid.uuid4()), application_string, username_string, password_string, url_string)
+    account = Account(str(uuid.uuid4()), application_string,
+                      username_string, password_string, url_string)
     account.save_account()
     print('Account saved to the vault. Use `--list` to see all saved accounts.')
 
@@ -103,9 +109,11 @@ def edit_account(uuid: str, edit_parameter: int) -> None:
         new_value = input('Please enter your desired username: ')
     elif edit_parameter == 3:
         field_name = 'password'
-        type_check = input('Do you want a new random password or to enter a custom password? (random/custom): ')
+        type_check = input(
+            'Do you want a new random password or to enter a custom password? (random/custom): ')
         if type_check == 'random':
-            password_length = int(input('Please enter your desired password length: '))
+            password_length = int(
+                input('Please enter your desired password length: '))
             if password_length < 8:
                 print('Error: Your password length must be at least 8 characters.')
             else:

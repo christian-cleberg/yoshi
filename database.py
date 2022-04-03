@@ -12,7 +12,8 @@ vault_encrypted = 'vault.sqlite.aes'
 def create_table() -> None:
     db_connection = sqlite3.connect(vault_decrypted)
     cursor = db_connection.cursor()
-    cursor.execute(''' CREATE TABLE accounts (uuid text, application text, username text, password text, url text) ''')
+    cursor.execute(
+        ''' CREATE TABLE accounts (uuid text, application text, username text, password text, url text) ''')
     db_connection.commit()
     db_connection.close()
 
@@ -22,9 +23,11 @@ def table_check() -> bool:
     check = False
     db_connection = sqlite3.connect(vault_decrypted)
     cursor = db_connection.cursor()
-    cursor.execute(''' SELECT count(name) FROM sqlite_master WHERE type='table' AND name='accounts' ''')
+    cursor.execute(
+        ''' SELECT count(name) FROM sqlite_master WHERE type='table' AND name='accounts' ''')
     if cursor.fetchone()[0] != 1:
-        user_choice = input('Password vault does not exist. Would you like to create it now? (y/n): ')
+        user_choice = input(
+            'Password vault does not exist. Would you like to create it now? (y/n): ')
         if user_choice == 'y' or user_choice == 'Y':
             create_table()
             check = True
@@ -38,12 +41,14 @@ def table_check() -> bool:
 
 
 # Add a new account to the database
-def create_account(uuid: str, application: str, username: str, password: str, url: str) -> None:
+def create_account(uuid: str, application: str, username: str, password: str,
+                   url: str) -> None:
     db_connection = sqlite3.connect(vault_decrypted)
     cursor = db_connection.cursor()
-    cursor.execute(''' INSERT INTO accounts VALUES (:uuid,:application,:username,:password,:url) ''',
-                   {'uuid': uuid, 'application': application, 'username': username, 'password': password,
-                    'url': url})
+    cursor.execute(
+        ''' INSERT INTO accounts VALUES (:uuid,:application,:username,:password,:url) ''',
+        {'uuid': uuid, 'application': application, 'username': username,
+         'password': password, 'url': url})
     db_connection.commit()
     db_connection.close()
 
@@ -52,7 +57,8 @@ def create_account(uuid: str, application: str, username: str, password: str, ur
 def delete_account(uuid: str) -> None:
     db_connection = sqlite3.connect(vault_decrypted)
     cursor = db_connection.cursor()
-    cursor.execute(''' DELETE FROM accounts WHERE uuid = :uuid ''', {'uuid': uuid})
+    cursor.execute(
+        ''' DELETE FROM accounts WHERE uuid = :uuid ''', {'uuid': uuid})
     db_connection.commit()
     db_connection.close()
 
@@ -61,7 +67,8 @@ def delete_account(uuid: str) -> None:
 def find_account(uuid: str) -> list:
     db_connection = sqlite3.connect(vault_decrypted)
     cursor = db_connection.cursor()
-    cursor.execute(''' SELECT * FROM accounts WHERE uuid = :uuid ''', {'uuid': uuid})
+    cursor.execute(
+        ''' SELECT * FROM accounts WHERE uuid = :uuid ''', {'uuid': uuid})
     account = cursor.fetchall()
     db_connection.close()
     return account
