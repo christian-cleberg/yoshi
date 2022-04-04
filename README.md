@@ -46,6 +46,8 @@ python3 main.py --help
 All commands can be passed to the program with the following template:  
 `python3 main.py <COMMAND> <FLAG> <PARAMETER>`
 
+![Yoshi CLI Help](./examples/yoshi-help.png)
+
 ## Arguments
 
 ### Summary
@@ -171,6 +173,8 @@ when encrypting, none are required when decrypting:
     </tr>
   </tbody>
 </table>
+
+![Yoshi CLI New Account](./examples/yoshi-example.png)
 
 # Contributing
 
