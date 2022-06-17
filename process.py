@@ -74,7 +74,8 @@ def create_account() -> None:
     username_string = input('Please enter your username for this account: ')
     url_string = input('(Optional) Please enter a URL for this account: ')
     password_type = input(
-        'Do you want a random character password (p) or XKCD-style passphrase (x)? (p|x): ')
+        '''Do you want a random character password (p), an XKCD-style passphrase 
+(x), or a custom password (c)? (p|x|c): ''')
     if password_type == "x" or password_type == "xkcd":
         password_length = int(
             input('Please enter number of words to include (min. 2): '))
@@ -85,7 +86,7 @@ def create_account() -> None:
         else:
             password_string = generate_passphrase(
                 password_length, password_separator)
-    else:
+    elif password_type == "p":
         password_length = int(
             input('Please enter your desired password length (min. 8): '))
         if password_length < 8:
@@ -93,6 +94,8 @@ def create_account() -> None:
         else:
             password_characters = generate_characters(password_length)
             password_string = shuffle_characters(password_characters)
+    else:
+        password_string = input('Please enter your desired password: ')
     account = Account(str(uuid.uuid4()), application_string,
                       username_string, password_string, url_string)
     account.save_account()
