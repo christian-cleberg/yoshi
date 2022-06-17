@@ -24,7 +24,7 @@ information.
 To run the script locally, run the following commands:
 
 ```bash
-git clone https://github.com/christian-cleberg/yoshi/
+git clone https://git.sr.ht/~kaizoku/yoshi/
 ```
 
 ```bash
